@@ -22,7 +22,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; img-src 'self' https://raw.githubusercontent.com; media-src https://play.pokemonshowdown.com",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com; media-src https://play.pokemonshowdown.com",
           },
         ],
       },
