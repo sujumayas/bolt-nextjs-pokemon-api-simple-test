@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /** output: 'export',*/
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -22,7 +21,9 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com; media-src https://play.pokemonshowdown.com",
+            value: process.env.NODE_ENV === 'development' 
+              ? "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com; media-src https://play.pokemonshowdown.com; connect-src 'self' https://pokeapi.co"
+              : "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://raw.githubusercontent.com; media-src https://play.pokemonshowdown.com; connect-src 'self' https://pokeapi.co",
           },
         ],
       },
